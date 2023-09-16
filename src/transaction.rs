@@ -1,4 +1,5 @@
 use crate::location::{Country, Continent};
+use chrono::NaiveDate;
 
 struct Transaction {
     transaction_id: u32,
