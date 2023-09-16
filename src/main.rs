@@ -1,8 +1,13 @@
 mod location;
 mod transaction;
+
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufReader, BufRead};
 use transaction::Transaction;
+use crate::location::Continent;
+use crate::transaction::{display_one_continent, summarise_by_continent};
+
 
 fn main() {
     let file = File::open("./transactions.csv").unwrap();
@@ -23,10 +28,15 @@ fn main() {
         }
     }
 
-    for transaction in transactions {
-        println!("{:?}", transaction);
+    for transaction in &transactions {
+        println!("Valid transaction: {:?}", transaction);
     }
     for (idx, skipped_line, line_str) in skipped_lines {
         println!("Skipped {:?} {:?} {:?}", idx, skipped_line, line_str);
     }
+
+    let summary = summarise_by_continent(&transactions);
+    println!("Summary: {:?}", summary);
+
+    display_one_continent(&transactions, &Continent::Europe);
 }
