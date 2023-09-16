@@ -55,7 +55,8 @@ pub fn display_one_continent(transactions: &Vec<Transaction>, continent: &Contin
     let continent_transactions = transactions
         .into_iter()
         .filter(|txn| txn.continent == *continent);
+    println!("Here are {:?}'s transactions", continent);
     for transaction in continent_transactions {
-        println!("{:?} transaction: {:?}", continent, transaction);
+        println!("{:?}", transaction);
     }
 }
