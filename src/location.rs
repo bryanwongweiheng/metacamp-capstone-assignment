@@ -14,3 +14,11 @@ enum Country {
     India,
     Switzerland
 }
+
+enum Continent {
+    NorthAmerica,
+    Europe,
+    Asia,
+    Oceania,
+    SouthAmerica,
+}
