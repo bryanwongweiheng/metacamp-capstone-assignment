@@ -1,7 +1,8 @@
+use std::fmt;
 use std::str::FromStr;
 
 #[derive(Debug)]
-pub(crate) enum Country {
+pub enum Country {
     UnitedStates,
     Canada,
     UnitedKingdom,
@@ -18,8 +19,8 @@ pub(crate) enum Country {
     Switzerland
 }
 
-#[derive(Debug)]
-pub(crate) enum Continent {
+#[derive(Debug, PartialEq)]
+pub enum Continent {
     NorthAmerica,
     Europe,
     Asia,
@@ -68,5 +69,11 @@ impl FromStr for Country {
             "Switzerland" => Ok(Country::Switzerland),
             _ => Err("Invalid Country name"),
         }
+    }
+}
+
+impl fmt::Display for Continent {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{:?}", self)
     }
 }

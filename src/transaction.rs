@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use crate::location::{Country, Continent};
 use chrono::NaiveDate;
 
@@ -37,5 +38,24 @@ impl Transaction {
             days_under_management,
         };
         Ok(transaction)
+    }
+}
+
+
+pub fn summarise_by_continent(transactions: &Vec<Transaction>) -> HashMap<String, f64> {
+    let mut summary: HashMap<String, f64> = HashMap::new();
+    for transaction in transactions {
+        let continent_string = transaction.continent.to_string();
+        *summary.entry(continent_string).or_default() += transaction.amount;
+    }
+    summary
+}
+
+pub fn display_one_continent(transactions: &Vec<Transaction>, continent: &Continent) {
+    let continent_transactions = transactions
+        .into_iter()
+        .filter(|txn| txn.continent == *continent);
+    for transaction in continent_transactions {
+        println!("{:?} transaction: {:?}", continent, transaction);
     }
 }
