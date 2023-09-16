@@ -1,5 +1,6 @@
 use std::str::FromStr;
 
+#[derive(Debug)]
 pub(crate) enum Country {
     UnitedStates,
     Canada,
@@ -17,6 +18,7 @@ pub(crate) enum Country {
     Switzerland
 }
 
+#[derive(Debug)]
 pub(crate) enum Continent {
     NorthAmerica,
     Europe,

@@ -1,6 +1,7 @@
 use crate::location::{Country, Continent};
 use chrono::NaiveDate;
 
+#[derive(Debug)]
 pub struct Transaction {
     transaction_id: u32,
     client_id: u32,
