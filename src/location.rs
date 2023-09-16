@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-enum Country {
+pub(crate) enum Country {
     UnitedStates,
     Canada,
     UnitedKingdom,
@@ -17,7 +17,7 @@ enum Country {
     Switzerland
 }
 
-enum Continent {
+pub(crate) enum Continent {
     NorthAmerica,
     Europe,
     Asia,
@@ -26,7 +26,7 @@ enum Continent {
 }
 
 impl Country {
-    fn country_to_continent(self) -> Continent {
+    pub fn country_to_continent(&self) -> Continent {
         match self {
             Country::UnitedStates => Continent::NorthAmerica,
             Country::Canada => Continent::NorthAmerica,
