@@ -14,6 +14,7 @@ pub struct Transaction {
 }
 
 impl Transaction {
+    /// parses a line from a csv file into a Transaction. needs 7 fields
      pub fn from_csv_line(line: &str) -> Result<Transaction, String> {
         let fields: Vec<&str> = line.split(',').collect();
         if fields.len() != 7 {
@@ -42,6 +43,7 @@ impl Transaction {
 }
 
 
+/// sums the total transaction amount by continent
 pub fn summarise_by_continent(transactions: &Vec<Transaction>) -> HashMap<String, f64> {
     let mut summary: HashMap<String, f64> = HashMap::new();
     for transaction in transactions {
@@ -51,6 +53,7 @@ pub fn summarise_by_continent(transactions: &Vec<Transaction>) -> HashMap<String
     summary
 }
 
+/// prints out transactions for chosen continent
 pub fn display_one_continent(transactions: &Vec<Transaction>, continent: &Continent) {
     let continent_transactions = transactions
         .into_iter()
